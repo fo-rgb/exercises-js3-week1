@@ -1,5 +1,3 @@
-
-
 /*Task. go through all of these issues and make appropriate improvements to the code.
 
 1. Naming: the function has a bad name, myFunction() tells you nothing about
@@ -38,8 +36,50 @@
    need them, but it's important to remove them if you don't end up using them.
    
    */
+  // Variabe de los dedu
+var taxeCode1 = 0.09;
+var taxeCode2 = 0.1;
+var taxeCode3 = 0.05;
+var taxeCode4 = 0.08;
+var taxeCode5 = 17775;
 
+function ConditionSalary(taxCode, newSalary) {
+  if (taxCode === "1150L") {
+    return (nationalInsurance = newSalary * taxeCode2);
+  } else if (taxCode === "ST") {
+    return (nationalInsurance = newSalary * taxeCode3);
+  } else {
+    return (nationalInsurance = newSalary * taxeCode4);
+  }
+}
 
+function SegundCondition(deductions, newSalary) {
+  var finalSalary = newSalary;
+  deductions.forEach((deduction) => {
+    finalSalary = finalSalary - deduction;
+  });
+  return finalSalary;
+}
+
+function CalcularSalary(salary, taxCode, incomeTax1, incomeTax2) {
+  var newSalary = salary;
+  var totalIncomeTax = incomeTax1 + incomeTax2;
+  var studentLoan = (newSalary - taxeCode5) * taxeCode1;
+  var originalSalary = newSalary;
+  var nationalInsurance = ConditionSalary(taxCode, newSalary);
+  var deductions = [nationalInsurance, totalIncomeTax, studentLoan];
+  var finalSalary = SegundCondition(deductions, newSalary);
+
+  return (
+    "Your gross income is ï¿½" +
+    originalSalary.toString() +
+    " and your net income is ï¿½" +
+    finalSalary.toString() +
+    "."
+  );
+}
+
+// //function 2
 function myFunction(salary, taxCode, incomeTax1, incomeTax2, ownsCar) {
   var totalIncomeTax = incomeTax1 + incomeTax2;
   var studentLoan = (salary - 17775) * 0.09;
@@ -61,12 +101,12 @@ function myFunction(salary, taxCode, incomeTax1, incomeTax2, ownsCar) {
   salary = salary - deductions[2];
 
   return (
-    "Your gross income is £" +
+    "Your gross income is ï¿½" +
     originalSalary.toString() +
-    " and your net income is £" +
+    " and your net income is ï¿½" +
     salary.toString() +
     "."
   );
 }
 
-console.log(myFunction(28000, "1150L", 1000, 580, false));
+console.log(CalcularSalary(28000, "1150L", 1000, 580, false));
